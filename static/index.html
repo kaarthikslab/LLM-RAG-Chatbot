@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDF Chat | Conversational RAG</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <div>
+          <h1>PaperPilot</h1>
+          <p>Conversational PDF assistant</p>
+        </div>
+      </div>
+
+      <button id="new-session-btn" class="new-session-btn" disabled>
+        <span>＋</span> New PDF session
+      </button>
+
+      <div class="sidebar-section">
+        <p class="section-label">CURRENT DOCUMENT</p>
+        <div class="document-card">
+          <div class="pdf-icon">PDF</div>
+          <div class="document-meta">
+            <strong id="document-name">No document uploaded</strong>
+            <span id="document-status">Upload a PDF to begin</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-tip">
+        <strong>Tip</strong>
+        <p>Ask follow-up questions naturally. The assistant uses your recent conversation to understand references such as “it” or “the first one”.</p>
+      </div>
+
+      <div class="sidebar-footer">Your PDF is processed for this active session.</div>
+    </aside>
+
+    <section class="main-panel">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">DOCUMENT INTELLIGENCE</p>
+          <h2 id="top-title">Chat with your PDF</h2>
+        </div>
+        <div class="session-pill"><span class="status-dot"></span><span id="session-label">No active session</span></div>
+      </header>
+
+      <section id="welcome-view" class="welcome-view">
+        <div class="welcome-icon">✦</div>
+        <p class="eyebrow">ASK. EXPLORE. UNDERSTAND.</p>
+        <h3>Make your documents<br />easier to understand.</h3>
+        <p class="welcome-copy">Upload a PDF and ask questions in plain language. Continue with follow-ups without repeating the context.</p>
+
+        <label class="upload-zone" for="pdf-input" id="upload-zone">
+          <span class="upload-symbol">↑</span>
+          <strong>Choose a PDF to get started</strong>
+          <span>Click to browse · PDF files only</span>
+          <input id="pdf-input" type="file" accept="application/pdf,.pdf" />
+        </label>
+        <p id="upload-message" class="feedback" role="status"></p>
+      </section>
+
+      <section id="chat-view" class="chat-view hidden">
+        <div id="messages" class="messages" aria-live="polite"></div>
+        <div class="composer-wrap">
+          <form id="chat-form" class="composer">
+            <textarea id="question-input" rows="1" placeholder="Ask a question about your PDF..." required></textarea>
+            <button id="send-btn" type="submit" aria-label="Send message">↑</button>
+          </form>
+          <p class="composer-note">Answers are generated from the uploaded PDF. Verify important information against the source.</p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
